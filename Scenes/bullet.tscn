@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bupn3lgu7kei1"]
 
 [ext_resource type="Texture2D" uid="uid://d30iyi63ocbpl" path="res://Assets/atlas.png" id="1_7mwxu"]
-[ext_resource type="Script" path="res://Scenes/bullet.gd" id="1_b1bia"]
+[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_b1bia"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2vc3y"]
 

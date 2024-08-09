@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ck2to62dnqdjw"]
 
 [ext_resource type="Texture2D" uid="uid://d30iyi63ocbpl" path="res://Assets/atlas.png" id="1_bvhey"]
-[ext_resource type="Script" path="res://Scenes/enemy.gd" id="1_o2wx7"]
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_m4vx3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7h6ea"]
 atlas = ExtResource("1_bvhey")
@@ -21,7 +21,7 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vme6p"]
 
 [node name="Enemy" type="Node2D"]
-script = ExtResource("1_o2wx7")
+script = ExtResource("1_m4vx3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4c0ox")

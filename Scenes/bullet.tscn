@@ -20,7 +20,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Bullet" type="CharacterBody2D"]
+[node name="Bullet" type="CharacterBody2D" groups=["bullet"]]
 script = ExtResource("1_b1bia")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

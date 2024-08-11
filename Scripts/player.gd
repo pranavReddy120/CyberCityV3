@@ -4,11 +4,13 @@ extends CharacterBody2D
 const bullet_path = preload("res://Scenes/bullet.tscn")
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var main_menu = preload("res://Menus/main_menu.tscn") as PackedScene
 
 const SPEED = 150
 const JUMP_VELOCITY = -300
 var speed = 300
 var can_shoot = true
+
 
 
 func shoot():
@@ -25,6 +27,9 @@ func _process(delta):
 			can_shoot = false
 	elif Input.is_action_just_released('shoot'):
 		can_shoot = true
+		
+	elif Input.is_action_just_pressed('esc'):
+		get_tree().change_scene_to_packed(main_menu)
 		
 		
 # making movement

@@ -2,6 +2,7 @@ extends Node2D
 
 var enemy_scene = preload("res://Scenes/enemy.tscn")
 
+
 func _on_enemy_spawner_timeout():
 	var enemy_instance = enemy_scene.instantiate()  # Instantiate the enemy scene
 	if enemy_instance:

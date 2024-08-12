@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var timer = $Timer
-
+var main_menu = preload("res://Scenes/main_menu.tscn")
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("bullet"):
@@ -16,4 +16,4 @@ func _on_area_2d_body_entered(body):
 		
 
 func _on_timer_timeout():
-	get_tree().reload_current_scene()
+	GameManager.transition_to_scene(main_menu.resource_path)

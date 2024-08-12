@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="CybercityV3"
-run/main_scene="res://Menus/main_menu.tscn"
+run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://Scripts/game_manager.gd"
 
 [input]
 

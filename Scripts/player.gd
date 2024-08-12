@@ -4,7 +4,7 @@ extends CharacterBody2D
 const bullet_path = preload("res://Scenes/bullet.tscn")
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var main_menu = preload("res://Menus/main_menu.tscn") as PackedScene
+#@onready var main_menu = preload("res://Menus/main_menu.tscn") as PackedScene
 
 const SPEED = 150
 const JUMP_VELOCITY = -300
@@ -29,8 +29,7 @@ func _process(delta):
 		can_shoot = true
 		
 	elif Input.is_action_just_pressed('esc'):
-		get_tree().change_scene_to_packed(main_menu)
-		
+		GameManager.pause_game()
 		
 # making movement
 # I was thinking arrows for movement and space for shoot. if we have interactions and maybe like inventory slots

@@ -10,14 +10,42 @@ const SPEED = 150
 const JUMP_VELOCITY = -300
 var speed = 300
 var can_shoot = true
+var direction = Vector2.RIGHT
 
-
-
+func Facing_Direction():
+	#default is to look right
+	if Input.is_action_pressed("right"):
+		direction = Vector2.RIGHT
+	if Input.is_action_pressed("left"):
+		direction = Vector2.LEFT
+	if Input.is_action_pressed("jump"):
+		direction = Vector2.UP
+	if Input.is_action_pressed("down"):
+		direction = Vector2.DOWN
+		
+	
+		
+		
 func shoot():
 	var bullet = bullet_path.instantiate() # instance of a bullet
 	get_parent().add_child(bullet) # sets the bullet as the child of the shooter
 	bullet.global_position = $Node2D/Marker2D.global_position
-	bullet.velocity = get_global_mouse_position() - bullet.position
+	Facing_Direction()
+	if (direction==Vector2.RIGHT):
+			bullet.velocity = Vector2(20,0)
+	if (direction==Vector2.LEFT):
+			bullet.velocity = Vector2(-20,0)
+			if (animated_sprite.get_animation()=="run"):
+				bullet.global_position.x -=25
+
+	if (direction==Vector2.DOWN):
+			bullet.velocity = Vector2(0,20)
+			bullet.global_position.y +=20
+			bullet.global_position.x -=5
+	if (direction==Vector2.UP):
+			bullet.velocity = Vector2(0,-20)
+			bullet.global_position.y -=20
+			bullet.global_position.x -=5
 
 func _process(delta):
 	$Node2D.look_at(get_global_mouse_position())

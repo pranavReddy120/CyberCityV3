@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpopg5hsbmwcn"]
+[gd_scene load_steps=3 format=3 uid="uid://bpopg5hsbmwcn"]
 
-[ext_resource type="Texture2D" uid="uid://bnpc64s7h8agh" path="res://Assets/background.png" id="1_17psm"]
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_60q0h"]
 
 [sub_resource type="SystemFont" id="SystemFont_xuof0"]
@@ -16,7 +15,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_17psm")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15

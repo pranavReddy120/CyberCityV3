@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpopg5hsbmwcn"]
+[gd_scene load_steps=4 format=3 uid="uid://bpopg5hsbmwcn"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_60q0h"]
+[ext_resource type="Texture2D" uid="uid://bnpc64s7h8agh" path="res://Assets/background.png" id="2_y6y0a"]
 
 [sub_resource type="SystemFont" id="SystemFont_xuof0"]
 font_names = PackedStringArray("Impact")
@@ -67,6 +68,11 @@ custom_minimum_size = Vector2(120, 32)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Quit"
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(682, 291)
+texture = ExtResource("2_y6y0a")
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

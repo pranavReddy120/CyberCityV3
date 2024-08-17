@@ -11,7 +11,6 @@ func _on_area_2d_body_entered(body):
 	elif body.is_in_group("player"):
 		body.get_node("AnimatedSprite2D").modulate = Color(1,0,0)
 		await get_tree().create_timer(0.2).timeout
-		body.get_node("CollisionShape2D").queue_free()
 		timer.start()
 		
 

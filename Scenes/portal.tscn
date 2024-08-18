@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://se4cvdw7q5ny"]
+
+[ext_resource type="Texture2D" uid="uid://m8l3300bo6qc" path="res://Assets/spr_portal_strip8.png" id="1_dmaxh"]
+[ext_resource type="Script" path="res://Scripts/portal.gd" id="1_iq4c1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oicii"]
+atlas = ExtResource("1_dmaxh")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yb8hs"]
+atlas = ExtResource("1_dmaxh")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5n8eb"]
+atlas = ExtResource("1_dmaxh")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ki3bb"]
+atlas = ExtResource("1_dmaxh")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qddyg"]
+atlas = ExtResource("1_dmaxh")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7k83"]
+atlas = ExtResource("1_dmaxh")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ptcuv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oicii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yb8hs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5n8eb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ki3bb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qddyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7k83")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j1fsw"]
+radius = 16.0
+height = 32.0
+
+[node name="Portal" type="Node2D"]
+z_index = -1
+script = ExtResource("1_iq4c1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ptcuv")
+frame_progress = 0.831305
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.35628, 2)
+shape = SubResource("CapsuleShape2D_j1fsw")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

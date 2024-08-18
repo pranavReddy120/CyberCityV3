@@ -1,5 +1,5 @@
 extends Node
-var world = preload("res://Scenes/world.tscn") 
+var world = preload("res://Scenes/level_1.tscn") 
 var pause_menu = preload("res://Scenes/pause_menu.tscn")
 
 

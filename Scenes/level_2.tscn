@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bff0gi8mqip4c"]
+[gd_scene load_steps=10 format=3 uid="uid://de4xo11rr0spm"]
 
-[ext_resource type="Script" path="res://Scripts/world.gd" id="1_h0lro"]
-[ext_resource type="PackedScene" uid="uid://twwk2qsirfci" path="res://Scenes/player.tscn" id="1_nc7r2"]
-[ext_resource type="PackedScene" uid="uid://ck2to62dnqdjw" path="res://Scenes/enemy.tscn" id="2_yu0ta"]
-[ext_resource type="Texture2D" uid="uid://bw7lscyrufmgv" path="res://Assets/tileset.png" id="4_6bg3c"]
-[ext_resource type="PackedScene" uid="uid://c12vp32p0xbv1" path="res://Scenes/killzone.tscn" id="5_dh5ry"]
+[ext_resource type="Script" path="res://Scripts/world.gd" id="1_mpdul"]
+[ext_resource type="PackedScene" uid="uid://twwk2qsirfci" path="res://Scenes/player.tscn" id="2_2jnvf"]
+[ext_resource type="PackedScene" uid="uid://ck2to62dnqdjw" path="res://Scenes/enemy.tscn" id="3_84wlv"]
+[ext_resource type="Texture2D" uid="uid://bw7lscyrufmgv" path="res://Assets/tileset.png" id="4_wqjee"]
+[ext_resource type="PackedScene" uid="uid://c12vp32p0xbv1" path="res://Scenes/killzone.tscn" id="5_6avqm"]
+[ext_resource type="PackedScene" uid="uid://se4cvdw7q5ny" path="res://Scenes/portal.tscn" id="6_oqf2g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mk11v"]
-texture = ExtResource("4_6bg3c")
+texture = ExtResource("4_wqjee")
 6:10/0 = 0
 6:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:10/0/physics_layer_0/angular_velocity = 0.0
@@ -49,15 +50,15 @@ sources/1 = SubResource("TileSetAtlasSource_mk11v")
 distance = -118.0
 
 [node name="World" type="Node2D"]
-script = ExtResource("1_h0lro")
+script = ExtResource("1_mpdul")
 
-[node name="Player" parent="." instance=ExtResource("1_nc7r2")]
+[node name="Player" parent="." instance=ExtResource("2_2jnvf")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
 limit_bottom = 200
 
-[node name="Enemy" parent="." instance=ExtResource("2_yu0ta")]
+[node name="Enemy" parent="." instance=ExtResource("3_84wlv")]
 position = Vector2(104, 0)
 
 [node name="Enemy_Spawner" type="Timer" parent="."]
@@ -67,11 +68,14 @@ autostart = true
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_os4pr")
 format = 2
-layer_0/tile_data = PackedInt32Array(262132, 458753, 11, 262133, 458753, 11, 262134, 458753, 11, 262135, 458753, 11, 262136, 458753, 11, 262137, 458753, 11, 262138, 458753, 11, 262139, 458753, 11, 262140, 458753, 11, 262141, 458753, 11, 262142, 458753, 11, 262143, 458753, 11, 196608, 458753, 11, 196609, 458753, 11, 196610, 458753, 11, 196611, 458753, 11, 196612, 458753, 11, 196613, 458753, 11, 196614, 458753, 11, 196615, 458753, 11, 196616, 458753, 11, 196617, 458753, 11, 196618, 458753, 11, 196619, 458753, 11)
+layer_0/tile_data = PackedInt32Array(262132, 458753, 11, 262133, 458753, 11, 262134, 458753, 11, 262135, 458753, 11, 262136, 458753, 11, 262137, 458753, 11, 262138, 458753, 11, 262139, 458753, 11, 262140, 458753, 11, 262141, 458753, 11, 262142, 458753, 11, 262143, 458753, 11, 196608, 458753, 11, 196609, 458753, 11, 196610, 458753, 11, 196611, 458753, 11, 196612, 458753, 11, 196613, 458753, 11, 196614, 458753, 11, 196615, 458753, 11, 196616, 458753, 11, 196617, 458753, 11, 196618, 458753, 11, 196619, 458753, 11, 65550, 524289, 11, 65551, 524289, 11, 65552, 524289, 11, 65553, 524289, 11, 65554, 524289, 11, 65555, 524289, 11, 65556, 524289, 11, 65557, 524289, 11, 327703, 524289, 11, 327704, 524289, 11, 327705, 524289, 11, 327706, 524289, 11, 327707, 524289, 11, 327708, 524289, 11, 327709, 524289, 11, 327710, 524289, 11, 327711, 524289, 11, 327712, 524289, 11, 327713, 524289, 11, 327714, 524289, 11)
 
-[node name="killzone" parent="." instance=ExtResource("5_dh5ry")]
+[node name="killzone" parent="." instance=ExtResource("5_6avqm")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
 shape = SubResource("WorldBoundaryShape2D_xbygx")
+
+[node name="Portal" parent="." instance=ExtResource("6_oqf2g")]
+position = Vector2(539, 48)
 
 [connection signal="timeout" from="Enemy_Spawner" to="." method="_on_enemy_spawner_timeout"]

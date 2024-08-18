@@ -1,6 +1,7 @@
 extends Node
 var world = preload("res://Scenes/level_1.tscn") 
 var pause_menu = preload("res://Scenes/pause_menu.tscn")
+var level_2 = preload("res://Scenes/level_2.tscn")
 
 
 func start_game(): 

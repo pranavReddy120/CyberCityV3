@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bff0gi8mqip4c"]
+[gd_scene load_steps=11 format=3 uid="uid://bff0gi8mqip4c"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_g24yu"]
 [ext_resource type="PackedScene" uid="uid://twwk2qsirfci" path="res://Scenes/player.tscn" id="2_58w10"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bw7lscyrufmgv" path="res://Assets/tileset.png" id="4_dknmv"]
 [ext_resource type="PackedScene" uid="uid://c12vp32p0xbv1" path="res://Scenes/killzone.tscn" id="5_77gvm"]
 [ext_resource type="PackedScene" uid="uid://se4cvdw7q5ny" path="res://Scenes/portal.tscn" id="6_e8f2l"]
+[ext_resource type="PackedScene" uid="uid://c6jcclm5xhde4" path="res://Scenes/melee.tscn" id="7_aoc6d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mk11v"]
 texture = ExtResource("4_dknmv")
@@ -77,5 +78,8 @@ shape = SubResource("WorldBoundaryShape2D_xbygx")
 
 [node name="Portal" parent="." instance=ExtResource("6_e8f2l")]
 position = Vector2(539, 48)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("7_aoc6d")]
+position = Vector2(247, 14)
 
 [connection signal="timeout" from="Enemy_Spawner" to="." method="_on_enemy_spawner_timeout"]

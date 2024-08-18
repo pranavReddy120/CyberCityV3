@@ -6,6 +6,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animated_sprite = $AnimatedSprite2D
 #@onready var main_menu = preload("res://Menus/main_menu.tscn") as PackedScene
 
+
 const SPEED = 150
 const JUMP_VELOCITY = -300
 var speed = 300
@@ -36,6 +37,7 @@ func _process(delta):
 		
 	elif Input.is_action_just_pressed('esc'):
 		GameManager.pause_game()
+	
 		
 # making movement
 # I was thinking arrows for movement and space for shoot. if we have interactions and maybe like inventory slots
@@ -74,3 +76,5 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	
+
+

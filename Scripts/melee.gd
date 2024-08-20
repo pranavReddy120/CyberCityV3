@@ -12,6 +12,7 @@ func _ready():
 	$AnimatedSprite2D.play("run")
 
 func _physics_process(delta):
+		
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	
@@ -29,13 +30,29 @@ func flip():
 	else:
 		speed = abs(speed) * -1
 		
-		
-func _on_attack_area_entered(body):
-	if body.is_in_group("player"):
-		body.get_node("AnimatedSprite2D").modulate = Color(1,0,0)
-		await get_tree().create_timer(0.2).timeout
-		timer.start()
 
 func _on_timer_timeout():
 	GameManager.transition_to_scene(main_menu.resource_path)
 	
+func hit():
+	$Swing.monitering = true
+
+func end_hit():
+	$Swing.monitering = false
+	
+func start_walk():
+	$AnimatedSprite2D.play("run")
+
+func _on_attack_body_entered(body):
+	$AnimatedSprite2D.play("attack")
+	
+
+func _on_swing_body_entered(body):
+		if body.is_in_group("player"):
+			body.get_node("AnimatedSprite2D").modulate = Color(1,0,0)
+			await get_tree().create_timer(0.2).timeout
+			timer.start()
+
+
+func _on_attack_body_exited(body):
+	start_walk()

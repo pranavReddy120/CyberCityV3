@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bff0gi8mqip4c"]
+[gd_scene load_steps=10 format=3 uid="uid://bff0gi8mqip4c"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_g24yu"]
 [ext_resource type="PackedScene" uid="uid://twwk2qsirfci" path="res://Scenes/player.tscn" id="2_58w10"]
-[ext_resource type="PackedScene" uid="uid://ck2to62dnqdjw" path="res://Scenes/enemy.tscn" id="3_pi8ra"]
 [ext_resource type="Texture2D" uid="uid://bw7lscyrufmgv" path="res://Assets/tileset.png" id="4_dknmv"]
 [ext_resource type="PackedScene" uid="uid://c12vp32p0xbv1" path="res://Scenes/killzone.tscn" id="5_77gvm"]
 [ext_resource type="PackedScene" uid="uid://se4cvdw7q5ny" path="res://Scenes/portal.tscn" id="6_e8f2l"]
@@ -58,9 +57,6 @@ script = ExtResource("1_g24yu")
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
 limit_bottom = 200
-
-[node name="Enemy" parent="." instance=ExtResource("3_pi8ra")]
-position = Vector2(104, 0)
 
 [node name="Enemy_Spawner" type="Timer" parent="."]
 wait_time = 2.0

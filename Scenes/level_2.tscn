@@ -62,7 +62,7 @@ position = Vector2(0, 33)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -41)
 zoom = Vector2(3, 3)
-limit_top = -50
+limit_top = -59
 limit_bottom = 200
 
 [node name="Enemy" parent="." instance=ExtResource("3_84wlv")]

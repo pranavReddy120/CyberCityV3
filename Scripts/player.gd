@@ -4,15 +4,17 @@ extends CharacterBody2D
 const bullet_path = preload("res://Scenes/bullet.tscn")
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animated_sprite = $AnimatedSprite2D
-#@onready var main_menu = preload("res://Menus/main_menu.tscn") as PackedScene
+@onready var healthbar = $CanvasLayer/HealthBar
 
 const SPEED = 150
 const JUMP_VELOCITY = -300
 var speed = 300
 var can_shoot = true
 var facing = true
-		
-	
+var health = 10
+
+func _ready():
+	healthbar.init_health(health) 
 		
 		
 func shoot():

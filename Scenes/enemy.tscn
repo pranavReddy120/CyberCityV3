@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ck2to62dnqdjw"]
+[gd_scene load_steps=7 format=3 uid="uid://ck2to62dnqdjw"]
 
 [ext_resource type="Texture2D" uid="uid://d30iyi63ocbpl" path="res://Assets/atlas.png" id="1_bvhey"]
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_m4vx3"]
+[ext_resource type="PackedScene" uid="uid://bq0by4ds62bcy" path="res://Scenes/healthbar.tscn" id="3_7c46c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7h6ea"]
 atlas = ExtResource("1_bvhey")
@@ -34,6 +35,13 @@ scale = Vector2(1.6, 1.36)
 shape = SubResource("CapsuleShape2D_vme6p")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="HealthBar" parent="." instance=ExtResource("3_7c46c")]
+offset_left = -16.0
+offset_top = -29.0
+offset_right = 284.0
+offset_bottom = -9.0
+scale = Vector2(0.110513, 0.15965)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

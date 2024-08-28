@@ -34,9 +34,10 @@ func start_walk():
 	$AnimatedSprite2D.play("walk")
 
 func _on_detector_body_entered(body):
-	facing_right = true
-	fire()
-	await get_tree().create_timer(0.5).timeout
+	if body.is_in_group("player"):
+		facing_right = true
+		fire()
+	
 
 func _on_detector_body_exited(body):
 	start_walk()
@@ -48,12 +49,12 @@ func fire():
 	get_parent().add_child(bullet) # sets the bullet as the child of the shooter
 	bullet.global_position = $Node2D/Marker2D.global_position
 	bullet.velocity = $Aim.global_position - bullet.position
-
+	await get_tree().create_timer(3).timeout	
 
 func _on_detector_2_body_entered(body):
-	facing_right = false
-	fire_left()
-	await get_tree().create_timer(0.5).timeout
+	if body.is_in_group("player"):
+		facing_right = false
+		fire_left()
 
 func fire_left():
 	$AnimatedSprite2D.play("Stand")
@@ -61,6 +62,7 @@ func fire_left():
 	get_parent().add_child(bullet)
 	bullet.global_position = $Node2D/Marker2D2.global_position
 	bullet.velocity = $Aim2.global_position - bullet.position 
+	await get_tree().create_timer(3).timeout
 
 func _on_detector_2_body_exited(body):
 	start_walk()

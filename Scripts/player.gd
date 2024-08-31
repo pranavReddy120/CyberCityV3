@@ -13,6 +13,7 @@ var can_shoot = true
 var facing = true
 var health = 10
 
+
 func _ready():
 	healthbar.init_health(health) 
 		
@@ -30,14 +31,30 @@ func shoot():
 
 func _process(delta):
 	if Input.is_action_just_pressed('shoot'):
+		if GameManager.current_ammo == 0: 
+			can_shoot = false
 		if can_shoot:
 			shoot()
+			GameManager.current_ammo -= 1
 			can_shoot = false
 	elif Input.is_action_just_released('shoot'):
 		can_shoot = true
 		
+	elif Input.is_action_just_pressed('reload'): 
+		if GameManager.reserve_ammo > 0:
+			if GameManager.reserve_ammo + GameManager.current_ammo <= GameManager.max_ammo:
+				GameManager.current_ammo += GameManager.reserve_ammo
+				GameManager.reserve_ammo = 0
+			else: 
+				GameManager.reserve_ammo -= GameManager.max_ammo - GameManager.current_ammo
+				GameManager.current_ammo = GameManager.max_ammo
+				
+		else:
+			return
+		
 	elif Input.is_action_just_pressed('esc'):
 		GameManager.pause_game()
+	
 		
 # making movement
 # I was thinking arrows for movement and space for shoot. if we have interactions and maybe like inventory slots

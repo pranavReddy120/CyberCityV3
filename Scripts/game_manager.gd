@@ -2,7 +2,9 @@ extends Node
 var world = preload("res://Scenes/level_1.tscn") 
 var pause_menu = preload("res://Scenes/pause_menu.tscn")
 var level_2 = preload("res://Scenes/level_2.tscn")
-
+var max_ammo = 10 
+var current_ammo = max_ammo
+var reserve_ammo = 20
 
 func start_game(): 
 	transition_to_scene(world.resource_path) #loads the world level

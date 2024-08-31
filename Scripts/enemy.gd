@@ -11,18 +11,18 @@ func _ready():
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("bullet"):
 		health -= 1 
-		healthbar.health = health
 		if health <= 0: 
 			$AnimatedSprite2D.modulate = Color(1, 0, 0)  # RGB values for red
 			await get_tree().create_timer(0.2).timeout
 			queue_free() #removes enemy from scene
+		healthbar.health = health
 	elif body.is_in_group("player"):
 		body.health -=1 
-		body.healthbar.health = body.health
 		if body.health <= 0: 
 			body.get_node("AnimatedSprite2D").modulate = Color(1,0,0)
 			await get_tree().create_timer(0.2).timeout
 			timer.start()
+		body.healthbar.health = body.health
 		
 
 func _on_timer_timeout():

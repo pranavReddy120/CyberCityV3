@@ -11,7 +11,6 @@ process_mode = 3
 script = ExtResource("1_60q0h")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-z_index = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -1,0 +1,145 @@
+[gd_scene load_steps=18 format=3 uid="uid://do1tfop0tp0ye"]
+
+[ext_resource type="Script" path="res://Scripts/range.gd" id="1_xt0oy"]
+[ext_resource type="Texture2D" uid="uid://bdlv1alx76kpl" path="res://Assets/1 Biker/Idle1.png" id="2_mhj3m"]
+[ext_resource type="Texture2D" uid="uid://d3xra0s53v5e1" path="res://Assets/1 Biker/Walk1.png" id="3_810gm"]
+[ext_resource type="Texture2D" uid="uid://ds0dxa276p0j" path="res://Assets/1 Biker/8_1.png" id="4_gs3iq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmajk"]
+atlas = ExtResource("2_mhj3m")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qluqp"]
+atlas = ExtResource("3_810gm")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3smj"]
+atlas = ExtResource("3_810gm")
+region = Rect2(46, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amliv"]
+atlas = ExtResource("3_810gm")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tff26"]
+atlas = ExtResource("3_810gm")
+region = Rect2(142, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xo1x3"]
+atlas = ExtResource("3_810gm")
+region = Rect2(192, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4ox3"]
+atlas = ExtResource("3_810gm")
+region = Rect2(238, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_17c3r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmajk")
+}],
+"loop": true,
+"name": &"Stand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qluqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3smj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amliv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tff26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xo1x3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4ox3")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2ipd"]
+atlas = ExtResource("4_gs3iq")
+region = Rect2(0, 0, 18, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ueoi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2ipd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5qww4"]
+radius = 9.0
+height = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bw7xt"]
+size = Vector2(80.5, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qrx8"]
+size = Vector2(83, 31)
+
+[node name="Range" type="CharacterBody2D"]
+script = ExtResource("1_xt0oy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(2, -8)
+sprite_frames = SubResource("SpriteFrames_17c3r")
+animation = &"Stand"
+autoplay = "walk"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, -4)
+sprite_frames = SubResource("SpriteFrames_8ueoi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_5qww4")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(14, 0)
+target_position = Vector2(0, 20)
+
+[node name="Detector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+position = Vector2(54.75, -0.5)
+shape = SubResource("RectangleShape2D_bw7xt")
+
+[node name="Detector2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector2"]
+position = Vector2(-55.5, -0.5)
+shape = SubResource("RectangleShape2D_3qrx8")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Node2D"]
+position = Vector2(22, 0)
+
+[node name="Marker2D2" type="Marker2D" parent="Node2D"]
+position = Vector2(-21, 0)
+
+[node name="Aim" type="Marker2D" parent="."]
+position = Vector2(34, 0)
+
+[node name="Aim2" type="Marker2D" parent="."]
+position = Vector2(-32, 0)
+
+[connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
+[connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]
+[connection signal="body_entered" from="Detector2" to="." method="_on_detector_2_body_entered"]
+[connection signal="body_exited" from="Detector2" to="." method="_on_detector_2_body_exited"]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://c76sche3mpyvl"]
+
+[ext_resource type="Script" path="res://Scripts/Ammo.gd" id="1_q441s"]
+[ext_resource type="Script" path="res://Scripts/Reserve.gd" id="2_f8obv"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ReserveContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Ammo_Label" type="Label" parent="VBoxContainer/ReserveContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Ammo: "
+
+[node name="Ammo" type="Label" parent="VBoxContainer/ReserveContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "
+"
+script = ExtResource("1_q441s")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Reserve_Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Reserves: "
+
+[node name="Reserve" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "
+"
+script = ExtResource("2_f8obv")

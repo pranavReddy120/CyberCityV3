@@ -1,10 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://csrpn6pcac5wq"]
+[gd_scene load_steps=14 format=3 uid="uid://csrpn6pcac5wq"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_mpdul"]
 [ext_resource type="PackedScene" uid="uid://twwk2qsirfci" path="res://Scenes/player.tscn" id="2_2jnvf"]
 [ext_resource type="PackedScene" uid="uid://ck2to62dnqdjw" path="res://Scenes/enemy.tscn" id="3_84wlv"]
 [ext_resource type="Texture2D" uid="uid://bw7lscyrufmgv" path="res://Assets/tileset.png" id="4_wqjee"]
 [ext_resource type="PackedScene" uid="uid://c12vp32p0xbv1" path="res://Scenes/killzone.tscn" id="5_6avqm"]
+[ext_resource type="Texture2D" uid="uid://chvama6p8xs7v" path="res://Assets/free-exclusion-zone-tileset-pixel-art/Night/1.png" id="6_5bqsr"]
+[ext_resource type="Texture2D" uid="uid://sysnhiwg2mu3" path="res://Assets/free-exclusion-zone-tileset-pixel-art/Night/2.png" id="7_t46ge"]
+[ext_resource type="Texture2D" uid="uid://blqmbld3tif4v" path="res://Assets/free-exclusion-zone-tileset-pixel-art/Night/3.png" id="8_s55an"]
+[ext_resource type="Texture2D" uid="uid://divtgyf4wlqpg" path="res://Assets/free-exclusion-zone-tileset-pixel-art/Night/4.png" id="9_i1jwk"]
+[ext_resource type="Texture2D" uid="uid://b3l05w6ikbagi" path="res://Assets/free-exclusion-zone-tileset-pixel-art/Night/5.png" id="10_b3vq8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mk11v"]
 texture = ExtResource("4_wqjee")
@@ -52,9 +57,12 @@ distance = -118.0
 script = ExtResource("1_mpdul")
 
 [node name="Player" parent="." instance=ExtResource("2_2jnvf")]
+position = Vector2(0, 33)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, -41)
 zoom = Vector2(3, 3)
+limit_top = -59
 limit_bottom = 200
 
 [node name="Enemy" parent="." instance=ExtResource("3_84wlv")]
@@ -65,13 +73,58 @@ wait_time = 2.0
 autostart = true
 
 [node name="TileMap" type="TileMap" parent="."]
+position = Vector2(0, 58)
 tile_set = SubResource("TileSet_os4pr")
 format = 2
-layer_0/tile_data = PackedInt32Array(262132, 458753, 11, 262133, 458753, 11, 262134, 458753, 11, 262135, 458753, 11, 262136, 458753, 11, 262137, 458753, 11, 262138, 458753, 11, 262139, 458753, 11, 262140, 458753, 11, 262141, 458753, 11, 262142, 458753, 11, 262143, 458753, 11, 196608, 458753, 11, 196609, 458753, 11, 196610, 458753, 11, 196611, 458753, 11, 196612, 458753, 11, 196613, 458753, 11, 196614, 458753, 11, 196615, 458753, 11, 196616, 458753, 11, 196617, 458753, 11, 196618, 458753, 11, 196619, 458753, 11, 65550, 524289, 11, 65551, 524289, 11, 65552, 524289, 11, 65553, 524289, 11, 65554, 524289, 11, 65555, 524289, 11, 65556, 524289, 11, 65557, 524289, 11, 327703, 524289, 11, 327704, 524289, 11, 327705, 524289, 11, 327706, 524289, 11, 327707, 524289, 11, 327708, 524289, 11, 327709, 524289, 11, 327710, 524289, 11, 327711, 524289, 11, 327712, 524289, 11, 327713, 524289, 11, 327714, 524289, 11)
+layer_0/tile_data = PackedInt32Array(262132, 458753, 11, 262133, 458753, 11, 262134, 458753, 11, 262135, 458753, 11, 262136, 458753, 11, 262137, 458753, 11, 262138, 458753, 11, 262139, 458753, 11, 262140, 458753, 11, 262141, 458753, 11, 262142, 458753, 11, 262143, 458753, 11, 196608, 458753, 11, 196609, 458753, 11, 196610, 458753, 11, 196611, 458753, 11, 196612, 458753, 11, 196613, 458753, 11, 196614, 458753, 11, 196615, 458753, 11, 196616, 458753, 11, 196617, 458753, 11, 196618, 458753, 11, 196619, 458753, 11, 196620, 524289, 11, 196621, 524289, 11, 196622, 524289, 11, 196623, 524289, 11, 196624, 524289, 11, 196625, 524289, 11, 196626, 524289, 11, 196627, 524289, 11, 196628, 524289, 11, 196629, 524289, 11, 196630, 524289, 11, 196631, 524289, 11, 196632, 524289, 11, 196633, 524289, 11, 196634, 524289, 11, 196635, 524289, 11, 196636, 524289, 11, 196637, 524289, 11, 196638, 524289, 11, 196639, 524289, 11, 196640, 524289, 11, 196641, 524289, 11, 196642, 524289, 11, 196643, 524289, 11, 196644, 524289, 11, 196645, 524289, 11, 196646, 524289, 11, 196647, 524289, 11, 65577, 524289, 11, 65578, 524289, 11, 65579, 524289, 11, 65580, 524289, 11, 65581, 524289, 11, 65582, 524289, 11, 65583, 524289, 11, 65584, 524289, 11)
 
 [node name="killzone" parent="." instance=ExtResource("5_6avqm")]
+position = Vector2(0, 59)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
 shape = SubResource("WorldBoundaryShape2D_xbygx")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_offset = Vector2(906, 577.5)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(576, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(120, 68)
+texture = ExtResource("6_5bqsr")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(576, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(120, 68)
+texture = ExtResource("7_t46ge")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(576, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(120, 68)
+texture = ExtResource("8_s55an")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-1, 0)
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(576, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(120, 68)
+texture = ExtResource("9_i1jwk")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(576, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+position = Vector2(120, 68)
+texture = ExtResource("10_b3vq8")
 
 [connection signal="timeout" from="Enemy_Spawner" to="." method="_on_enemy_spawner_timeout"]

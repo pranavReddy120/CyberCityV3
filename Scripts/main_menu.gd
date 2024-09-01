@@ -8,3 +8,4 @@ func _on_play_button_pressed():
 
 func _on_quit_button_pressed():
 	GameManager.quit_game()
+ 

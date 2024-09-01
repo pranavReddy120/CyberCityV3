@@ -1,9 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://twwk2qsirfci"]
+[gd_scene load_steps=23 format=3 uid="uid://twwk2qsirfci"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_424eb"]
 [ext_resource type="Texture2D" uid="uid://bv3ne7unmvoq0" path="res://Assets/3 Cyborg/Idle1.png" id="2_qlwvd"]
 [ext_resource type="Texture2D" uid="uid://b8m7kh6xaflst" path="res://Assets/3 Cyborg/Jump1.png" id="3_b5ppg"]
 [ext_resource type="Texture2D" uid="uid://d0nmgkm77qmp8" path="res://Assets/3 Cyborg/Run1.png" id="4_xmh0c"]
+[ext_resource type="PackedScene" uid="uid://bq0by4ds62bcy" path="res://Scenes/healthbar.tscn" id="5_nvp1k"]
+[ext_resource type="PackedScene" uid="uid://c76sche3mpyvl" path="res://Scenes/Ammo.tscn" id="6_yb8b6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wowbb"]
 height = 20.9302
@@ -153,3 +155,12 @@ position = Vector2(27, 0)
 
 [node name="Aim2" type="Marker2D" parent="."]
 position = Vector2(-28, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("5_nvp1k")]
+z_index = -1
+scale = Vector2(1.14744, 0.835794)
+
+[node name="Ammo" parent="CanvasLayer" instance=ExtResource("6_yb8b6")]
+position = Vector2(1, 24)

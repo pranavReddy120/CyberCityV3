@@ -11,6 +11,7 @@ func _ready():
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("bullet"):
 		health -= 1 
+		body.queue_free()
 		if health <= 0: 
 			$AnimatedSprite2D.modulate = Color(1, 0, 0)  # RGB values for red
 			await get_tree().create_timer(0.2).timeout
@@ -22,7 +23,10 @@ func _on_area_2d_body_entered(body):
 			body.get_node("AnimatedSprite2D").modulate = Color(1,0,0)
 			await get_tree().create_timer(0.2).timeout
 			timer.start()
-		body.healthbar.health = body.health
+			body.healthbar.health = body.health
+		else:
+			body.healthbar.health = body.health
+		
 		
 
 func _on_timer_timeout():

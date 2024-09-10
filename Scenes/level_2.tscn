@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://csrpn6pcac5wq"]
+[gd_scene load_steps=15 format=3 uid="uid://csrpn6pcac5wq"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_mpdul"]
 [ext_resource type="PackedScene" uid="uid://twwk2qsirfci" path="res://Scenes/player.tscn" id="2_2jnvf"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://blqmbld3tif4v" path="res://Assets/free-exclusion-zone-tileset-pixel-art/Night/3.png" id="8_s55an"]
 [ext_resource type="Texture2D" uid="uid://divtgyf4wlqpg" path="res://Assets/free-exclusion-zone-tileset-pixel-art/Night/4.png" id="9_i1jwk"]
 [ext_resource type="Texture2D" uid="uid://b3l05w6ikbagi" path="res://Assets/free-exclusion-zone-tileset-pixel-art/Night/5.png" id="10_b3vq8"]
+[ext_resource type="PackedScene" uid="uid://c3v4ujjkbymso" path="res://Scenes/range.tscn" id="11_p3vpw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mk11v"]
 texture = ExtResource("4_wqjee")
@@ -126,5 +127,8 @@ motion_mirroring = Vector2(576, 2.08165e-12)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
 position = Vector2(120, 68)
 texture = ExtResource("10_b3vq8")
+
+[node name="Range" parent="." instance=ExtResource("11_p3vpw")]
+position = Vector2(706, 57)
 
 [connection signal="timeout" from="Enemy_Spawner" to="." method="_on_enemy_spawner_timeout"]

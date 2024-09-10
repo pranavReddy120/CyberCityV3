@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_g24yu"]
 [ext_resource type="PackedScene" uid="uid://twwk2qsirfci" path="res://Scenes/player.tscn" id="2_58w10"]
+[ext_resource type="PackedScene" uid="uid://ck2to62dnqdjw" path="res://Scenes/enemy.tscn" id="3_pi8ra"]
 [ext_resource type="Texture2D" uid="uid://bw7lscyrufmgv" path="res://Assets/tileset.png" id="4_dknmv"]
 [ext_resource type="PackedScene" uid="uid://c12vp32p0xbv1" path="res://Scenes/killzone.tscn" id="5_77gvm"]
 [ext_resource type="PackedScene" uid="uid://se4cvdw7q5ny" path="res://Scenes/portal.tscn" id="6_e8f2l"]
 [ext_resource type="PackedScene" uid="uid://c6jcclm5xhde4" path="res://Scenes/melee.tscn" id="7_aoc6d"]
-[ext_resource type="PackedScene" uid="uid://do1tfop0tp0ye" path="res://Scenes/range.tscn" id="7_mg40w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mk11v"]
 texture = ExtResource("4_dknmv")
@@ -48,7 +48,7 @@ physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_mk11v")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xbygx"]
-distance = -190.0
+distance = -118.0
 
 [node name="level_1" type="Node2D"]
 script = ExtResource("1_g24yu")
@@ -59,14 +59,17 @@ script = ExtResource("1_g24yu")
 zoom = Vector2(3, 3)
 limit_bottom = 200
 
+[node name="Enemy" parent="." instance=ExtResource("3_pi8ra")]
+position = Vector2(104, 0)
+
 [node name="Enemy_Spawner" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="." groups=["floor"]]
 tile_set = SubResource("TileSet_os4pr")
 format = 2
-layer_0/tile_data = PackedInt32Array(262132, 458753, 11, 262133, 458753, 11, 262134, 458753, 11, 262135, 458753, 11, 262136, 458753, 11, 262137, 458753, 11, 262138, 458753, 11, 262139, 458753, 11, 262140, 458753, 11, 262141, 458753, 11, 262142, 458753, 11, 262143, 458753, 11, 196608, 458753, 11, 196609, 458753, 11, 196610, 458753, 11, 196611, 458753, 11, 196612, 458753, 11, 196613, 458753, 11, 196614, 458753, 11, 196615, 458753, 11, 196616, 458753, 11, 196617, 458753, 11, 196618, 458753, 11, 196619, 458753, 11, 65550, 524289, 11, 65551, 524289, 11, 65552, 524289, 11, 65553, 524289, 11, 65554, 524289, 11, 65555, 524289, 11, 65556, 524289, 11, 65557, 524289, 11, 327703, 524289, 11, 327704, 524289, 11, 327705, 524289, 11, 327706, 524289, 11, 327707, 524289, 11, 327708, 524289, 11, 327709, 524289, 11, 327710, 524289, 11, 327711, 524289, 11, 327712, 524289, 11, 327713, 524289, 11, 327714, 524289, 11, 458766, 458753, 11, 458767, 458753, 11, 458768, 458753, 11, 458769, 458753, 11, 458770, 458753, 11, 393195, 458753, 11, 393196, 458753, 11, 393197, 458753, 11, 393198, 458753, 11, 393199, 458753, 11, 393200, 458753, 11, 393201, 458753, 11, 393202, 458753, 11, 26, 458753, 11, 27, 458753, 11, 28, 458753, 11)
+layer_0/tile_data = PackedInt32Array(262132, 458753, 11, 262133, 458753, 11, 262134, 458753, 11, 262135, 458753, 11, 262136, 458753, 11, 262137, 458753, 11, 262138, 458753, 11, 262139, 458753, 11, 262140, 458753, 11, 262141, 458753, 11, 262142, 458753, 11, 262143, 458753, 11, 196608, 458753, 11, 196609, 458753, 11, 196610, 458753, 11, 196611, 458753, 11, 196612, 458753, 11, 196613, 458753, 11, 196614, 458753, 11, 196615, 458753, 11, 196616, 458753, 11, 196617, 458753, 11, 196618, 458753, 11, 196619, 458753, 11, 65550, 524289, 11, 65551, 524289, 11, 65552, 524289, 11, 65553, 524289, 11, 65554, 524289, 11, 65555, 524289, 11, 65556, 524289, 11, 65557, 524289, 11, 327703, 524289, 11, 327704, 524289, 11, 327705, 524289, 11, 327706, 524289, 11, 327707, 524289, 11, 327708, 524289, 11, 327709, 524289, 11, 327710, 524289, 11, 327711, 524289, 11, 327712, 524289, 11, 327713, 524289, 11, 327714, 524289, 11)
 
 [node name="killzone" parent="." instance=ExtResource("5_77gvm")]
 
@@ -77,9 +80,6 @@ shape = SubResource("WorldBoundaryShape2D_xbygx")
 position = Vector2(539, 48)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("7_aoc6d")]
-position = Vector2(436, -4)
-
-[node name="Range" parent="." instance=ExtResource("7_mg40w")]
-position = Vector2(251, -6)
+position = Vector2(247, 14)
 
 [connection signal="timeout" from="Enemy_Spawner" to="." method="_on_enemy_spawner_timeout"]

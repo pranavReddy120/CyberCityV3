@@ -6,6 +6,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var timer = $Timer
 var main_menu = preload("res://Scenes/main_menu.tscn")
 
+
 var facing_right = true
 
 func _ready():

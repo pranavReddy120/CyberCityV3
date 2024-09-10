@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://do1tfop0tp0ye"]
+[gd_scene load_steps=17 format=3 uid="uid://c3v4ujjkbymso"]
 
 [ext_resource type="Script" path="res://Scripts/range.gd" id="1_xt0oy"]
 [ext_resource type="Texture2D" uid="uid://bdlv1alx76kpl" path="res://Assets/1 Biker/Idle1.png" id="2_mhj3m"]
@@ -89,9 +89,6 @@ height = 32.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bw7xt"]
 size = Vector2(80.5, 31)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qrx8"]
-size = Vector2(83, 31)
-
 [node name="Range" type="CharacterBody2D"]
 script = ExtResource("1_xt0oy")
 
@@ -116,30 +113,17 @@ target_position = Vector2(0, 20)
 [node name="Detector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+modulate = Color(0.513548, 1.20327e-07, 0.284258, 1)
 position = Vector2(54.75, -0.5)
 shape = SubResource("RectangleShape2D_bw7xt")
-
-[node name="Detector2" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector2"]
-position = Vector2(-55.5, -0.5)
-shape = SubResource("RectangleShape2D_3qrx8")
 
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="Node2D"]
 position = Vector2(22, 0)
 
-[node name="Marker2D2" type="Marker2D" parent="Node2D"]
-position = Vector2(-21, 0)
-
 [node name="Aim" type="Marker2D" parent="."]
 position = Vector2(34, 0)
 
-[node name="Aim2" type="Marker2D" parent="."]
-position = Vector2(-32, 0)
-
 [connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
 [connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]
-[connection signal="body_entered" from="Detector2" to="." method="_on_detector_2_body_entered"]
-[connection signal="body_exited" from="Detector2" to="." method="_on_detector_2_body_exited"]

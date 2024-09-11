@@ -17,7 +17,6 @@ func _on_area_2d_body_entered(body):
 			await get_tree().create_timer(0.2).timeout
 			queue_free() #removes enemy from scene
 		healthbar.health = health
-		body.queue_free()
 	elif body.is_in_group("player"):
 		body.health -=1 
 		if body.health <= 0: 

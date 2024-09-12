@@ -7,9 +7,9 @@ func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"):
 		print("teleporting")
 		for i in 3: #flashing animation to indicate teleporting
-			await get_tree().create_timer(0.5).timeout
+			await get_tree().create_timer(0.25).timeout
 			body.modulate.a8 = 100
-			await get_tree().create_timer(0.5).timeout
+			await get_tree().create_timer(0.25).timeout
 			body.modulate.a8 = 255
 		
 		GameManager.transition_to_scene(level_2.resource_path)

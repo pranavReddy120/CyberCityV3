@@ -74,7 +74,7 @@ text = "Restart"
 custom_minimum_size = Vector2(120, 32)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Quit"
+text = "Main Menu"
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

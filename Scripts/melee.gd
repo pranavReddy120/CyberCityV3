@@ -62,6 +62,12 @@ func _on_attack_body_exited(body):
 
 func _on_swing_body_entered(body):
 	if body.is_in_group("player"):
-			body.get_node("AnimatedSprite2D").modulate = Color(1,0,0)
-			await get_tree().create_timer(0.2).timeout
-			timer.start()
+			body.health -=1 
+			if body.health <= 0: 
+				body.get_node("AnimatedSprite2D").modulate = Color(1,0,0)
+				await get_tree().create_timer(0.2).timeout
+				timer.start()
+				body.healthbar.health = body.health
+			else:
+				body.healthbar.health = body.health
+		

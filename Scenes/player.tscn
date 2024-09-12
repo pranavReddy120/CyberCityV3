@@ -155,16 +155,16 @@ frame_progress = 0.498166
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="Node2D"]
-position = Vector2(18, 2.08165e-12)
+position = Vector2(22, 2.08165e-12)
 
 [node name="Marker2D2" type="Marker2D" parent="Node2D"]
-position = Vector2(-18, 0)
+position = Vector2(-23, 0)
 
 [node name="Aim1" type="Marker2D" parent="."]
-position = Vector2(27, 0)
+position = Vector2(33, 0)
 
 [node name="Aim2" type="Marker2D" parent="."]
-position = Vector2(-28, 0)
+position = Vector2(-35, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0

@@ -132,6 +132,8 @@ target_position = Vector2(0, 23)
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Swing" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Swing"]
 modulate = Color(0, 0, 1, 1)
@@ -139,4 +141,7 @@ position = Vector2(25, -18)
 shape = SubResource("CircleShape2D_n7whl")
 
 [connection signal="area_entered" from="Attack" to="." method="_on_attack_area_entered"]
+[connection signal="body_entered" from="Attack" to="." method="_on_attack_body_entered"]
+[connection signal="body_exited" from="Attack" to="." method="_on_attack_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Swing" to="." method="_on_swing_body_entered"]

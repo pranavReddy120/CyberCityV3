@@ -87,7 +87,7 @@ radius = 9.0
 height = 32.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bw7xt"]
-size = Vector2(80.5, 31)
+size = Vector2(80.5, 25)
 
 [node name="Range" type="CharacterBody2D"]
 script = ExtResource("1_xt0oy")
@@ -114,7 +114,7 @@ target_position = Vector2(0, 20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
 modulate = Color(0.513548, 1.20327e-07, 0.284258, 1)
-position = Vector2(54.75, -0.5)
+position = Vector2(54.75, -3.5)
 shape = SubResource("RectangleShape2D_bw7xt")
 
 [node name="Node2D" type="Node2D" parent="."]

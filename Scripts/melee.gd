@@ -44,11 +44,12 @@ func start_walk():
 	$AnimatedSprite2D.play("run")
 
 func _on_attack_body_entered(body):
-	hit()
-	await get_tree().create_timer(0.5).timeout
-	$Swing.monitoring = true
-	await get_tree().create_timer(0.2).timeout
-	$Swing.monitoring = false
+	if body.is_in_group("player"):
+		hit()
+		await get_tree().create_timer(0.5).timeout
+		$Swing.monitoring = true
+		await get_tree().create_timer(0.2).timeout
+		$Swing.monitoring = false
 
 func _on_attack_body_exited(body):
 	speed = 60

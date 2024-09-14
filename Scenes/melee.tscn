@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://c6jcclm5xhde4"]
+[gd_scene load_steps=21 format=3 uid="uid://c6jcclm5xhde4"]
 
 [ext_resource type="Script" path="res://Scripts/melee.gd" id="1_innh3"]
 [ext_resource type="Texture2D" uid="uid://d3w3hywcxkg1e" path="res://Assets/Attack1.png" id="2_vfc30"]
 [ext_resource type="Texture2D" uid="uid://vlkaarr5dvjf" path="res://Assets/Run.png" id="3_gafri"]
+[ext_resource type="PackedScene" uid="uid://bq0by4ds62bcy" path="res://Scenes/healthbar.tscn" id="4_qchan"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h08ic"]
 atlas = ExtResource("2_vfc30")
@@ -94,6 +95,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eyb3y"]
+radius = 13.0
+height = 42.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2s254"]
 radius = 9.0
 height = 38.0
@@ -114,6 +119,12 @@ sprite_frames = SubResource("SpriteFrames_bmyl8")
 animation = &"attack"
 autoplay = "run"
 frame_progress = 0.896687
+
+[node name="BulletDetector" type="Area2D" parent="."]
+position = Vector2(0, -19)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletDetector"]
+shape = SubResource("CapsuleShape2D_eyb3y")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -19)
@@ -140,6 +151,15 @@ modulate = Color(0, 0, 1, 1)
 position = Vector2(25, -18)
 shape = SubResource("CircleShape2D_n7whl")
 
+[node name="HealthBar" parent="." instance=ExtResource("4_qchan")]
+offset_left = -16.0
+offset_top = -29.0
+offset_right = 284.0
+offset_bottom = -9.0
+scale = Vector2(0.110513, 0.15965)
+
+[connection signal="area_entered" from="BulletDetector" to="." method="_on_bullet_detector_area_entered"]
+[connection signal="body_entered" from="BulletDetector" to="." method="_on_bullet_detector_body_entered"]
 [connection signal="area_entered" from="Attack" to="." method="_on_attack_area_entered"]
 [connection signal="body_entered" from="Attack" to="." method="_on_attack_body_entered"]
 [connection signal="body_exited" from="Attack" to="." method="_on_attack_body_exited"]

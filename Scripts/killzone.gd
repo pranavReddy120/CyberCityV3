@@ -4,9 +4,10 @@ extends Area2D
 var main_menu = preload("res://Scenes/main_menu.tscn")
 
 func _on_body_entered(body):
-	print("You died")
-	body.get_node("CollisionShape2D").queue_free()
-	timer.start()
+	if body.is_in_group("player"):
+		print("You died")
+		body.get_node("CollisionShape2D").queue_free()
+		timer.start()
 	
 	
 

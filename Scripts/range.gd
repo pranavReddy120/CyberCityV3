@@ -5,9 +5,12 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 const bullet_path = preload("res://Scenes/enemy_bullet.tscn")
 var main_menu = preload("res://Scenes/main_menu.tscn")
 var in_range = false
+@onready var healthbar = $HealthBar
+var health = 3
 
 func _ready():
 	$AnimatedSprite2D.play("walk")
+	healthbar.init_health(health) 
 
 func _physics_process(delta):
 		
@@ -62,3 +65,14 @@ func fire():
 	bullet.global_position = $Node2D/Marker2D.global_position
 	bullet.velocity = $Aim.global_position - bullet.position
 	
+
+
+func _on_bullet_detector_body_entered(body):
+	if body.is_in_group("bullet"):
+		health -= 1 
+		body.queue_free()
+		if health <= 0: 
+			$AnimatedSprite2D.modulate = Color(1, 0, 0)  # RGB values for red
+			await get_tree().create_timer(0.2).timeout
+			queue_free() #removes enemy from scene
+		healthbar.health = health

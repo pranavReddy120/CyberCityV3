@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://c3v4ujjkbymso"]
+[gd_scene load_steps=19 format=3 uid="uid://c3v4ujjkbymso"]
 
 [ext_resource type="Script" path="res://Scripts/range.gd" id="1_xt0oy"]
 [ext_resource type="Texture2D" uid="uid://bdlv1alx76kpl" path="res://Assets/1 Biker/Idle1.png" id="2_mhj3m"]
 [ext_resource type="Texture2D" uid="uid://d3xra0s53v5e1" path="res://Assets/1 Biker/Walk1.png" id="3_810gm"]
 [ext_resource type="Texture2D" uid="uid://ds0dxa276p0j" path="res://Assets/1 Biker/8_1.png" id="4_gs3iq"]
+[ext_resource type="PackedScene" uid="uid://bq0by4ds62bcy" path="res://Scenes/healthbar.tscn" id="5_kl0se"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dmajk"]
 atlas = ExtResource("2_mhj3m")
@@ -89,6 +90,10 @@ height = 32.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bw7xt"]
 size = Vector2(80.5, 25)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c0ynv"]
+radius = 11.0
+height = 36.0
+
 [node name="Range" type="CharacterBody2D"]
 script = ExtResource("1_xt0oy")
 
@@ -125,5 +130,18 @@ position = Vector2(22, 0)
 [node name="Aim" type="Marker2D" parent="."]
 position = Vector2(34, 0)
 
+[node name="HealthBar" parent="." instance=ExtResource("5_kl0se")]
+offset_left = -16.0
+offset_top = -29.0
+offset_right = 284.0
+offset_bottom = -9.0
+scale = Vector2(0.110513, 0.15965)
+
+[node name="BulletDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletDetector"]
+shape = SubResource("CapsuleShape2D_c0ynv")
+
 [connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
 [connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]
+[connection signal="body_entered" from="BulletDetector" to="." method="_on_bullet_detector_body_entered"]

@@ -1,5 +1,6 @@
-[gd_scene load_steps=50 format=3 uid="uid://chn0nr6diyykj"]
+[gd_scene load_steps=54 format=3 uid="uid://chn0nr6diyykj"]
 
+[ext_resource type="Script" path="res://boss.gd" id="1_egkx3"]
 [ext_resource type="Texture2D" uid="uid://c3kx1bmi7nc3x" path="res://Assets/Character_sheet.png" id="1_f75u5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bo5x7"]
@@ -359,16 +360,32 @@ radius = 6.0
 radius = 11.0
 height = 48.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1q52d"]
+radius = 17.0
+height = 46.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_agjmd"]
+radius = 6.70749
+height = 45.5067
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_buonk"]
+radius = 7.0
+height = 34.0
+
 [node name="Boss" type="CharacterBody2D"]
+script = ExtResource("1_egkx3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_bo5x7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 5)
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_4cny4")
 animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.0146036
 
 [node name="Arm" type="Area2D" parent="."]
 
@@ -383,3 +400,25 @@ shape = SubResource("CapsuleShape2D_f4mof")
 modulate = Color(0.273259, 0.599686, 0, 1)
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_lw1gs")
+
+[node name="Invincible" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Invincible"]
+modulate = Color(0.988235, 0, 0.384314, 1)
+position = Vector2(1, 4)
+shape = SubResource("CapsuleShape2D_1q52d")
+
+[node name="Melee" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Melee"]
+modulate = Color(1, 0.109804, 0, 1)
+position = Vector2(-20, 6)
+rotation = 0.47822
+shape = SubResource("CapsuleShape2D_agjmd")
+
+[node name="Shoot" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shoot"]
+position = Vector2(-25, -7)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_buonk")

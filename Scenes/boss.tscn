@@ -362,10 +362,11 @@ height = 48.0
 [node name="Boss" type="CharacterBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 2)
+position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_bo5x7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_4cny4")
 animation = &"Idle"
 
@@ -373,12 +374,12 @@ animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arm"]
 modulate = Color(0.492446, 0.579116, 0.183304, 1)
-position = Vector2(17, 6)
+position = Vector2(-18, 5)
 shape = SubResource("CapsuleShape2D_f4mof")
 
 [node name="Body" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
 modulate = Color(0.273259, 0.599686, 0, 1)
-position = Vector2(-1, 2)
+position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_lw1gs")

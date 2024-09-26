@@ -4,6 +4,7 @@ var pause_menu = preload("res://Scenes/pause_menu.tscn")
 var level_2 = preload("res://Scenes/level_2.tscn")
 var max_ammo = 10 
 var current_ammo = max_ammo
+var max_reserve = 20
 var reserve_ammo = 20
 
 func start_game(): 
@@ -18,6 +19,11 @@ func pause_game():
 	get_tree().get_root().add_child(pause_menu_instance)
 
 func resume_game(): 
+	get_tree().paused = false
+
+func restart_game(): 
+	current_ammo = max_ammo
+	reserve_ammo = max_reserve
 	get_tree().paused = false
 
 func transition_to_scene(scene_path): 

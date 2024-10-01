@@ -6,6 +6,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var healthbar = $CanvasLayer/HealthBar
 
+
 const SPEED = 150
 const JUMP_VELOCITY = -300
 var speed = 300
@@ -92,4 +93,6 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
-	
+
+
+

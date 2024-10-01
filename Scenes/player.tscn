@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://twwk2qsirfci"]
+[gd_scene load_steps=24 format=3 uid="uid://twwk2qsirfci"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_424eb"]
 [ext_resource type="Texture2D" uid="uid://bv3ne7unmvoq0" path="res://Assets/3 Cyborg/Idle1.png" id="2_qlwvd"]
@@ -9,6 +9,10 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wowbb"]
 height = 20.9302
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vy3om"]
+radius = 13.0
+height = 38.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dlvti"]
 atlas = ExtResource("2_qlwvd")
@@ -127,12 +131,19 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 3
 script = ExtResource("1_424eb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 scale = Vector2(1, 1.72)
 shape = SubResource("CapsuleShape2D_wowbb")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_vy3om")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -9)
@@ -144,16 +155,16 @@ frame_progress = 0.498166
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="Node2D"]
-position = Vector2(18, 2.08165e-12)
+position = Vector2(22, 2.08165e-12)
 
 [node name="Marker2D2" type="Marker2D" parent="Node2D"]
-position = Vector2(-18, 0)
+position = Vector2(-23, 0)
 
 [node name="Aim1" type="Marker2D" parent="."]
-position = Vector2(27, 0)
+position = Vector2(33, 0)
 
 [node name="Aim2" type="Marker2D" parent="."]
-position = Vector2(-28, 0)
+position = Vector2(-35, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0

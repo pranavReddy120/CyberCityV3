@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_mpdul"]
 [ext_resource type="PackedScene" uid="uid://twwk2qsirfci" path="res://Scenes/player.tscn" id="2_2jnvf"]
-[ext_resource type="PackedScene" uid="uid://ck2to62dnqdjw" path="res://Scenes/enemy.tscn" id="3_84wlv"]
 [ext_resource type="Texture2D" uid="uid://bw7lscyrufmgv" path="res://Assets/tileset.png" id="4_wqjee"]
 [ext_resource type="PackedScene" uid="uid://c12vp32p0xbv1" path="res://Scenes/killzone.tscn" id="5_6avqm"]
 [ext_resource type="Texture2D" uid="uid://chvama6p8xs7v" path="res://Assets/free-exclusion-zone-tileset-pixel-art/Night/1.png" id="6_5bqsr"]
@@ -10,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://blqmbld3tif4v" path="res://Assets/free-exclusion-zone-tileset-pixel-art/Night/3.png" id="8_s55an"]
 [ext_resource type="Texture2D" uid="uid://divtgyf4wlqpg" path="res://Assets/free-exclusion-zone-tileset-pixel-art/Night/4.png" id="9_i1jwk"]
 [ext_resource type="Texture2D" uid="uid://b3l05w6ikbagi" path="res://Assets/free-exclusion-zone-tileset-pixel-art/Night/5.png" id="10_b3vq8"]
+[ext_resource type="PackedScene" uid="uid://c3v4ujjkbymso" path="res://Scenes/range.tscn" id="11_p3vpw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mk11v"]
 texture = ExtResource("4_wqjee")
@@ -64,13 +64,6 @@ position = Vector2(0, -41)
 zoom = Vector2(3, 3)
 limit_top = -59
 limit_bottom = 200
-
-[node name="Enemy" parent="." instance=ExtResource("3_84wlv")]
-position = Vector2(104, 0)
-
-[node name="Enemy_Spawner" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(0, 58)
@@ -127,4 +120,5 @@ motion_mirroring = Vector2(576, 2.08165e-12)
 position = Vector2(120, 68)
 texture = ExtResource("10_b3vq8")
 
-[connection signal="timeout" from="Enemy_Spawner" to="." method="_on_enemy_spawner_timeout"]
+[node name="Range" parent="." instance=ExtResource("11_p3vpw")]
+position = Vector2(706, 57)

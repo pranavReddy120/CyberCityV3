@@ -1,14 +1,17 @@
 extends Node
-var world = preload("res://Scenes/level_1.tscn") 
+var level_1 = preload("res://Scenes/level_1.tscn") 
 var pause_menu = preload("res://Scenes/pause_menu.tscn")
 var level_2 = preload("res://Scenes/level_2.tscn")
+var boss_level = preload("res://Scenes/boss_level.tscn")
+var level_menu = preload("res://Scenes/level_menu.tscn")
 var max_ammo = 10 
 var current_ammo = max_ammo
 var max_reserve = 20
 var reserve_ammo = 20
 
-func start_game(): 
-	transition_to_scene(world.resource_path) #loads the world level
+func start_game(scene_path): 
+	transition_to_scene(scene_path) #loads the world level
+	resume_game()
 
 func quit_game(): 
 	get_tree().quit()

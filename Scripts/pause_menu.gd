@@ -10,6 +10,7 @@ func _on_resume_button_pressed():
 
 func _on_quit_button_pressed():
 	GameManager.transition_to_scene(main_menu.resource_path)
+	queue_free()
 
 
 func _on_restart_button_pressed():

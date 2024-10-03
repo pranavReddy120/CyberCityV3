@@ -1,7 +1,8 @@
-[gd_scene load_steps=54 format=3 uid="uid://chn0nr6diyykj"]
+[gd_scene load_steps=55 format=3 uid="uid://chn0nr6diyykj"]
 
 [ext_resource type="Script" path="res://boss.gd" id="1_egkx3"]
 [ext_resource type="Texture2D" uid="uid://c3kx1bmi7nc3x" path="res://Assets/Character_sheet.png" id="1_f75u5"]
+[ext_resource type="PackedScene" uid="uid://bq0by4ds62bcy" path="res://Scenes/healthbar.tscn" id="3_c3ymd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bo5x7"]
 radius = 9.0
@@ -422,3 +423,10 @@ shape = SubResource("CapsuleShape2D_agjmd")
 position = Vector2(-25, -7)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_buonk")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_c3ymd")]
+offset_left = -48.0
+offset_top = -30.0
+offset_right = 252.0
+offset_bottom = -10.0
+scale = Vector2(0.34, 0.299998)
